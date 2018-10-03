@@ -17,7 +17,7 @@ local backgroundImage = display.newImageRect("Images/background.png", 2048, 1536
 local beetleship = display.newImageRect("Images/beetleship.png", 200, 200)
 
 -- set image to be transparent
-beetleship.alpha = 0
+beetleship.alpha = 1
 
 -- set the intial x and y postition of beetleship
 beetleship.x = 0
@@ -45,10 +45,10 @@ scrollSpeed = 3
 local girl1 = display.newImageRect("Images/girl1.png", 200, 200)
 
 -- set image to be transparent
-girl1.alpha = -1
+girl1.alpha = 1
 
 -- set the intial x and y postition of beetleship
-girl1.x = 0
+girl1.x = display.contentWidth
 girl1.y = display.contentHeight*2/3
 
 -- Function: MoveShip
@@ -57,9 +57,9 @@ girl1.y = display.contentHeight*2/3
 -- Description: This function adds the scroll speed to the x-value of the ship
 local function MoveGirl(event) 
 	-- add the scroll speed to the x-value of the ship
-	girl1.x = girl1.x + scrollSpeed
+	girl1.x = girl1.x - scrollSpeed
 	-- change the transparency of the ship every time moves so that it fades out
-	girl1.alpha = girl1.alpha + 0.01
+	girl1.alpha = girl1.alpha - 0.00001
 end
 
 -- MoveShip will be called over and over again

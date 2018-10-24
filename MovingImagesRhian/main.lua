@@ -4,6 +4,10 @@
 -- Course: ICS2O
 -- This program moves beetship across the screen and it grow, fade, go left, go right.
 
+-- Set sound
+local correctSound = audio.loadSound( "Sounds/spring.mp3" )
+local correctSoundChannel
+
 -- hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
@@ -64,6 +68,10 @@ end
 
 -- MoveShip will be called over and over again
 Runtime:addEventListener("enterFrame", MoveGirl)
+
+-- play the sound
+correctSoundChannel = audio.play(correctSound)
+
 
 -----------------------------------------------------------------------------------------
 

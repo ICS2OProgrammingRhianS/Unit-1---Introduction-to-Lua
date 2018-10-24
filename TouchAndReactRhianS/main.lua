@@ -4,6 +4,10 @@
 -- Course: ICS2O
 -- This program changes the button when you click the button.
 
+-- Set sound
+local correctSound = audio.loadSound( "Sounds/spring.mp3" )
+local correctSoundChannel
+
 --set background colour
 display.setDefault ("background", 15/255, 104/255, 2/255)
 
@@ -91,6 +95,10 @@ BlueButton:addEventListener("touch", BlueButtonListener)
 RedButton:addEventListener("touch", RedButtonListener)
 
 checkmark:addEventListener("touch", checkmarkListener)
+
+-- play the sound
+correctSoundChannel = audio.play(correctSound)
+
 
 
 

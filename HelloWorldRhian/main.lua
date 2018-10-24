@@ -13,6 +13,12 @@ display.setStatusBar(display.hiddenStatusBar)
 --sets the background colour
 display.setDefault("background",27/255, 23/255, 5/255)
 
+
+
+-- Set sound
+local correctSound = audio.loadSound( "Sounds/spring.mp3" )
+local correctSoundChannel
+
 --create a local variable
 local textObectH
 
@@ -27,3 +33,5 @@ local textObjectB
 
 textObjectB = display.newText("By Rhian", 550, 550, nil, 50)
 
+-- play the sound
+correctSoundChannel = audio.play(correctSound)

@@ -9,8 +9,10 @@
 -- hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
+
+
 -- set the background colour
-display.setDefault("background", 50/255, 50/255, 50/255)
+display.setDefault("background", 0/255, 0/255, 70/255)
 
 
 -----------------------------------------------------------------------------------------
@@ -41,6 +43,8 @@ local heart1
 local heart2
 local heart3
 local heart4
+
+
 
 -----------------------------------------------------------------------------------------
 -- Sounds
@@ -85,13 +89,18 @@ end
 local function HideCorrect()
 	correctObject.isVisible = false
 	AskQuestion()
+	-- reset the number of seconds left
+	
+	
 
 end
 
 local function HideIncorrect()
 	incorrectObject.isVisible = false
 	AskQuestion()
-
+-- reset the number of seconds left
+	secondsLeft = totalSeconds
+	lives = lives - 1
 
 
 	
@@ -114,6 +123,24 @@ local function UpdateHeart()
 	elseif (lives == 0) then
 	    heart1.isVisible = false 
 
+	    -- make the game over visible
+	    gameOver.isVisible = true
+
+	    -- Make points invisible
+	    textObjectPoints.isVisible = false
+
+	    -- make question invisible
+	    	questionObject.isVisible = false
+
+
+
+
+	    --stop the timer
+
+	    -- sound for end game
+
+		
+
 	end
 end
 
@@ -128,6 +155,10 @@ local function UpdateTime()
 			-- reset the number of seconds left
 			secondsLeft = totalSeconds
 			lives = lives - 1
+			print(lives)
+			UpdateHeart()	
+			
+
 		end
 	end
 
@@ -177,6 +208,8 @@ local function NumericFieldListener( event )
 
         end
 
+        event.target.text = ""
+
     end
 
 end
@@ -199,6 +232,13 @@ heart3.x = display.contentWidth * 5 / 8
 heart3.y = display.contentHeight * 6 / 8
 
 clockText = display.newText("", display.contentWidth * 5 / 8, display.contentHeight * 4 / 8, nil, 50)
+
+gameOver = display.newImageRect("Images/gameOver.png", display.contentWidth, display.contentHeight)
+gameOver.x = 512
+gameOver.y = 384
+gameOver.isVisible = false
+
+
 
 heart4 = display.newImageRect("Images/heart.png", 100, 100)
 heart4.x = display.contentWidth * 4 / 8
